@@ -7,14 +7,18 @@ class Solution:
         result = []
         final = []
         count = 0
+
         for i in flowerbed:
             if i == 0:
                 count += 1
-            elif i == 1 and count >= 3:
-                result.append(count)
-                count = 0
             else:
+                if i == 1 and count >= 3:
+                    result.append(count)
                 count = 0
+        
+        # 最后一段全都是0没有1作为一个截断，那么按照现有的逻辑是不会更新进result的，还需要再优化一下
+        if count >= 3:
+            result.append(count)
 
         for j in result:
             final.append((j-1)//2) #整除运算，自动实现向下取整

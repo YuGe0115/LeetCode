@@ -2,6 +2,8 @@ class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool: #返回一个布尔值
         
         # 思路来源于CSDN，3个连续的0可以种一个，4个连续的0可以种1个，5个连续的0可以种2个……
+        # 注意，还要考虑两端是0的情况！
+        flowerbed = [0] + flowerbed + [0]
         result = []
         final = []
         count = 0

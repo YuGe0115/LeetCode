@@ -11,6 +11,9 @@ class Solution:
             string = str(x)
             string1 = string[::-1]
             string2 = int(string1)
-            return sign * string2
+            if string2 < -2^31 or string2 > 2^31 -1:
+                return 0
+            else:
+                return sign * string2
         
         

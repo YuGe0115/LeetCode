@@ -9,7 +9,7 @@ class Solution:
                 sign = -1
             x = abs(x)
             string = str(x)
-            string1 = string[::-1]
+            string1 = string[::-1] # -1就是从右往左看的意思
             string2 = int(string1)
             if string2 < -2**31 or string2 > (2**31 - 1):
                 return 0

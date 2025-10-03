@@ -7,7 +7,7 @@ class Solution:
             if char in mapping:  # 如果是闭括号
                 if not stack or stack.pop() != mapping[char]:  # pop是取最右一个元素的意思；这里的判断条件是栈空或不匹配
                     return False
-            else:  # 如果是开括号
+            else:  # 如果是开括号，那就先暂存在这个“列表伪装的栈”里面
                 stack.append(char)
         
         return len(stack) == 0  # 栈空表示有效

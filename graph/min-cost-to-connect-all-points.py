@@ -3,28 +3,25 @@ import heapq
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         n = len(points)
-
-        visited =[False]*n
-        heap = [(0,0)] #(distance, vertex)
+        visited = [0]*n
         count = 0
-        total_cost = 0
-
-        while count < n :
-            cost, u =heapq.heappop(heap)
-            if visited[u]:
+        cost = 0
+        heap = [(0,0)]
+        while count < n:
+            cost_add , a = heapq.heappop(heap)
+            if visited[a]:
                 continue
-            
-            visited[u] = True
-            total_cost = total_cost + cost
-            count += 1
-
-            for v in range(n):
-                if not visited[v]:
-                    distance = abs(points[u][0] - points[v][0]) + abs(points[u][1] - points[v][1])
-                    heapq.heappush(heap, (distance, v))
-    
-        return total_cost
-
+            else:
+                count += 1
+                cost += cost_add
+                visited[a] = 1
+                for i in range(n):
+                    if visited[i] == 0:
+                        distance = abs(points[a][0] - points[i][0]) + abs(points[a][1] - points[i][1])
+                        heapq.heappush(heap,(distance, i))
+                    else:
+                        continue
+        return cost
 
 
         
